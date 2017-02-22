@@ -17,18 +17,32 @@ class FirstAppTest < Test::Unit::TestCase
   def test_the_index
     get '/'
     assert last_response.ok?
-    assert_equal 'Hello World', last_response.body
+    assert_equal 'Hello World!', last_response.body
   end
 
   def test_names_page
     name = Faker::Name.first_name
     get "/#{name}"
     assert last_response.ok?
-    assert_equal "Hi there, #{name}", last_response.body
+    assert_equal "Why hello there, #{name}!", last_response.body
   end
 
-  def test_lipsums_page
-    # TODO: Fill me in to check each lipsum you support.
+  def test_cupcake_page
+    get "/lorem/cupcake"
+    assert last_response.ok?
+    assert_equal Cupcake.call, last_response.body
+  end
+
+  def test_cheese_page
+    get "/lorem/cheese"
+    assert last_response.ok?
+    assert_equal Cheese.call, last_response.body
+  end
+
+  def test_future_page
+    get "/lorem/future"
+    assert last_response.ok?
+    assert_equal Future.call, last_response.body
   end
 
 
