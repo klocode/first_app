@@ -1,7 +1,7 @@
 class Cupcake
 
   def self.text
-    "Candy biscuit chocolate bar cookie sesame snaps cake cookie toffee. Cookie dessert tootsie roll gummi bears. Chocolate bar soufflé pastry soufflé dessert. Muffin gingerbread fruitcake."
+    "<p>Candy biscuit chocolate bar cookie sesame snaps cake cookie toffee. Cookie dessert tootsie roll gummi bears. Chocolate bar soufflé pastry soufflé dessert. Muffin gingerbread fruitcake.</p>"
   end
 
   def self.set_number(num)
