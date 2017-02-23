@@ -5,7 +5,7 @@ require_relative 'future'
 
 
 get "/" do
-  "Hello World!"
+  "Greetings Earthling!"
 end
 
 get "/:name" do

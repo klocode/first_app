@@ -35,19 +35,31 @@ class FirstAppTest < Test::Unit::TestCase
   def test_cupcake_page
     get "/lorem/cupcake"
     assert last_response.ok?
-    assert_equal Cupcake.call, last_response.body
+    assert_equal Cupcake.text, last_response.body
+
+    get "/lorem/cupcake/2"
+    assert last_response.ok?
+    assert_equal Cupcake.text * 2, last_response.body
   end
 
   def test_cheese_page
     get "/lorem/cheese"
     assert last_response.ok?
-    assert_equal Cheese.call, last_response.body
+    assert_equal Cheese.text, last_response.body
+
+    get "lorem/cheese/3"
+    assert last_response.ok?
+    assert_equal Cheese.text * 3, last_response.body
   end
 
   def test_future_page
     get "/lorem/future"
     assert last_response.ok?
-    assert_equal Future.call, last_response.body
+    assert_equal Future.text, last_response.body
+
+    get "lorem/future/4"
+    assert last_response.ok?
+    assert_equal Future.text * 4, last_response.body
   end
 
 
