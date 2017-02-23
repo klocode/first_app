@@ -70,7 +70,7 @@ class FirstAppTest < Test::Unit::TestCase
   end
 
   # def test_post
-  #  post "/lorem/new", {name: "pirate", content: "Arr matey"}
+  #  post "/lorem/new", {name: "pirate", body: "Arr matey"}
   #  assert last_response.ok?
   #  lipsum = Lipsum.find_by(name: "pirate").body
   #  assert_equal lipsum, "Arr matey"
