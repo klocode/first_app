@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
 ENV['RACK_ENV'] = 'test'
-require_relative 'first_app'
+require_relative 'adventure'
 require 'test/unit'
 require 'rack/test'
 require 'faker'
@@ -33,48 +33,32 @@ class FirstAppTest < Test::Unit::TestCase
   end
 
   def test_cupcake_page
-
-    # I could not get tests working for adventure
-    # get "/lorem/cupcake"
-    # assert last_response.ok?
-    # text = Lipsum.find_by(name: "#{params["cupcake"]}.capitalize").body
-    # assert_equal text, last_response.body
-
     get "/lorem/cupcake"
     assert last_response.ok?
-    assert_equal Cupcake.text, last_response.body
-
-    get "lorem/cupcake/3"
-    assert last_response.ok?
-    assert_equal Cupcake.text * 3, last_response.body
+    ipsum = Lipsum.find_by(name: "Cupcake").text
+    assert_equal ipsum, last_response.body
   end
 
   def test_cheese_page
     get "/lorem/cheese"
     assert last_response.ok?
-    assert_equal Cheese.text, last_response.body
-
-    get "lorem/cheese/3"
-    assert last_response.ok?
-    assert_equal Cheese.text * 3, last_response.body
+    ipsum = Lipsum.find_by(name: "Cheese").text
+    assert_equal ipsum, last_response.body
   end
 
   def test_future_page
     get "/lorem/future"
     assert last_response.ok?
-    assert_equal Future.text, last_response.body
-
-    get "lorem/future/4"
-    assert last_response.ok?
-    assert_equal Future.text * 4, last_response.body
+    ipsum = Lipsum.find_by(name: "Future").text
+    assert_equal ipsum, last_response.body
   end
 
-  # def test_post
-  #  post "/lorem/new", {name: "pirate", body: "Arr matey"}
-  #  assert last_response.ok?
-  #  lipsum = Lipsum.find_by(name: "pirate").body
-  #  assert_equal lipsum, "Arr matey"
-  # end
+  def test_post
+   post "/lorem/new", {name: "dog", text: "Woof Woof"}
+   assert last_response.ok?
+   lipsum = Lipsum.find_by(name: "dog").text
+   assert_equal lipsum, "Woof Woof"
+  end
 
 
 end

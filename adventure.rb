@@ -25,12 +25,12 @@ get "/lorem/:lipsum/?:num?" do
   if %w(cheese cupcake future).include? params[:lipsum]
     # Object.const_get(params[:lipsum].capitalize).call(params[:num])
     num = params[:num].to_i == 0 ? 1 : params[:num].to_i
-    Lipsum.find_by(name: params[:lipsum].capitalize).body * num
+    Lipsum.find_by(name: params[:lipsum].capitalize).text * num
   end
 end
 
-post "/lorem/new/?:num?" do
-  Lipsum.create!(name: params[:name], body: params[:body])
+post "/lorem/new" do
+  Lipsum.create(name: params[:name], text: params[:text])
 end
 
 #error message doesnt work as intended
